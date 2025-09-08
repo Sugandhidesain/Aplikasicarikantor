@@ -2,10 +2,13 @@ import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Gs} from '../../../assets/styles/GlobalStyle';
 import {colors} from '../../../assets/styles/Colors';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, type NavigationProp} from '@react-navigation/native';
+import type {RootStackParamList} from '../../types/navigation';
+
+type NavigationProps = NavigationProp<RootStackParamList>;
 
 function CardDetail(): JSX.Element {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProps>();
   return (
     <View style={styles.container}>
       <View style={styles.leftContent}>
@@ -14,7 +17,7 @@ function CardDetail(): JSX.Element {
           style={styles.thumbnail}
         />
         <View>
-          <Text style={[Gs.h2, Gs.textBlack]}>Indoorwork</Text>
+          <Text style={[Gs.h2, Gs.textBlack]}>IndoorWork</Text>
           <View style={[Gs.flexRow, Gs.itemsCenter]}>
             <Image
               source={require('../../../assets/icons/star_yellow.png')}

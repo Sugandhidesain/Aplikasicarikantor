@@ -2,10 +2,13 @@ import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {colors} from '../../../assets/styles/Colors';
 import {Gs} from '../../../assets/styles/GlobalStyle';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, type NavigationProp} from '@react-navigation/native';
+import type {RootStackParamList} from '../../types/navigation';
+
+type NavigationProps = NavigationProp<RootStackParamList>;
 
 function Success(): JSX.Element {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProps>();
   return (
     <View style={styles.container}>
       <View>
@@ -28,9 +31,9 @@ function Success(): JSX.Element {
         </View>
       </View>
       <View style={styles.textContainer}>
-        <Text style={[Gs.h1, Gs.textBlack]}>Success Booking</Text>
+        <Text style={[Gs.h1, Gs.textBlack]}>Booking Successful</Text>
         <Text style={[Gs.textCenter, Gs.textGrey]}>
-          Your space is ready to use for your growing business and life
+          Your space is ready for your growing business and life.
         </Text>
       </View>
       <TouchableOpacity

@@ -4,7 +4,6 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  Touchable,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -13,10 +12,13 @@ import Header from '../../components/Header';
 import CardDetail from '../../components/CardDetail';
 import {Gs} from '../../../assets/styles/GlobalStyle';
 import InputText from '../../components/InputText';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, type NavigationProp} from '@react-navigation/native';
+import type {RootStackParamList} from '../../types/navigation';
+
+type NavigationProps = NavigationProp<RootStackParamList>;
 
 function Booking(): JSX.Element {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProps>();
   const forms = [
     {
       label: 'Total days',
@@ -52,12 +54,12 @@ function Booking(): JSX.Element {
   const renderBookingInformation = () => {
     return (
       <View style={styles.section}>
-        <Text style={[Gs.h3, Gs.textBlack]}>Booking Informations</Text>
-        <Text style={Gs.textGrey}>Lorem ensure data valid cant change</Text>
+        <Text style={[Gs.h3, Gs.textBlack]}>Booking Information</Text>
+        <Text style={Gs.textGrey}>Ensure your data is valid; it can't be changed.</Text>
         {forms.map((val, idx) => {
           return (
             <InputText
-              key={idx}
+              key={`${val.label}-${idx}`}
               label={val.label}
               placeholder={val.placeholder}
               icon={val.icon}

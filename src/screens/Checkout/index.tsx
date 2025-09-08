@@ -11,10 +11,13 @@ import {colors} from '../../../assets/styles/Colors';
 import Header from '../../components/Header';
 import {Gs} from '../../../assets/styles/GlobalStyle';
 import CardDetail from '../../components/CardDetail';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, type NavigationProp} from '@react-navigation/native';
+import type {RootStackParamList} from '../../types/navigation';
+
+type NavigationProps = NavigationProp<RootStackParamList>;
 
 function Checkout(): JSX.Element {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProps>();
   const checkoutData = [
     {
       label: 'Price per day',
@@ -27,13 +30,13 @@ function Checkout(): JSX.Element {
       isBold: false,
     },
     {
-      label: 'Date',
-      value: '22 Januari 2023',
+      label: 'Start date',
+      value: '22 January 2023',
       isBold: false,
     },
     {
-      label: 'End',
-      value: '2 Februari 2023',
+      label: 'End date',
+      value: '2 February 2023',
       isBold: false,
     },
     {
@@ -75,7 +78,7 @@ function Checkout(): JSX.Element {
           const isLast = idx === checkoutData?.length - 1;
           return (
             <View
-              key={idx}
+              key={`${val.label}-${idx}`}
               style={[styles.checkoutItem, !isLast && borderBottom]}>
               <Text style={Gs.textBlack}>{val.label}</Text>
               <Text
@@ -100,7 +103,7 @@ function Checkout(): JSX.Element {
         <View style={styles.paymentContainer}>
           <TouchableOpacity style={styles.paymentButton}>
             <Image source={require('../../../assets/icons/wallet.png')} />
-            <Text style={[Gs.h5, Gs.textBlack]}>MyWallet</Text>
+            <Text style={[Gs.h5, Gs.textBlack]}>My Wallet</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.paymentButton}>
             <Image source={require('../../../assets/icons/mastercard.png')} />

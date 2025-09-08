@@ -1,4 +1,5 @@
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, type NavigationProp} from '@react-navigation/native';
+import type {RootStackParamList} from '../../types/navigation';
 import React from 'react';
 import {
   FlatList,
@@ -14,8 +15,10 @@ import InputText from '../../components/InputText';
 import NewsworthyItem from '../../components/NewsworthyItem';
 import BottomNav from '../../components/BottomNav';
 
+type NavigationProps = NavigationProp<RootStackParamList>;
+
 function Home(): JSX.Element {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProps>();
 
   const handlePress = () => {
     navigation.navigate('Details');

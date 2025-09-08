@@ -12,10 +12,13 @@ import {colors} from '../../../assets/styles/Colors';
 import Header from '../../components/Header';
 import SliderItem from '../../components/SliderItem';
 import {Gs} from '../../../assets/styles/GlobalStyle';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, type NavigationProp} from '@react-navigation/native';
+import type {RootStackParamList} from '../../types/navigation';
+
+type NavigationProps = NavigationProp<RootStackParamList>;
 
 function Details(): JSX.Element {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProps>();
   const slider = [
     require('../../../assets/images/item_2_a.png'),
     require('../../../assets/images/item_2_b.png'),
@@ -26,7 +29,7 @@ function Details(): JSX.Element {
     return (
       <FlatList
         data={slider}
-        keyExtractor={({index}) => index}
+        keyExtractor={(_, index) => index.toString()}
         renderItem={({item}) => <SliderItem image={item} />}
         horizontal
         showsHorizontalScrollIndicator={false}

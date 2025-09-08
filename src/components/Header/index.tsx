@@ -1,7 +1,8 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Gs} from '../../../assets/styles/GlobalStyle';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, type NavigationProp} from '@react-navigation/native';
+import type {RootStackParamList} from '../../types/navigation';
 
 interface HeaderProps {
   title: string;
@@ -9,8 +10,10 @@ interface HeaderProps {
   showRightButton?: boolean;
 }
 
+type NavigationProps = NavigationProp<RootStackParamList>;
+
 function Header({title, subtitle, showRightButton}: HeaderProps): JSX.Element {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProps>();
 
   return (
     <View style={styles.container}>

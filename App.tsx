@@ -2,13 +2,14 @@ import React from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import type {RootStackParamList} from './src/types/navigation';
 import Home from './src/screens/Home';
 import Details from './src/screens/Details';
 import Booking from './src/screens/Booking';
 import Checkout from './src/screens/Checkout';
 import Success from './src/screens/Success';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function App(): JSX.Element {
   return (
